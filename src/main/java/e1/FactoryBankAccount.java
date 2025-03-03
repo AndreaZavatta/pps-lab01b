@@ -16,4 +16,8 @@ public class FactoryBankAccount {
     public static BankAccount getSilverBankAccount(){
         return new BankWithFee(new BankCanWithdraw(new CoreBankAccount(), (amount, balance) -> amount > balance), 1);
     }
+
+    public static BankAccount getGoldBankAccount(){
+        return new BankWithFee(new BankCanWithdraw(new CoreBankAccount(), (amount, balance) -> amount - 500 > balance), 0);
+    }
 }

@@ -10,24 +10,22 @@ public class BankAccountTest {
 
     private BankAccount account;
 
-    @BeforeEach
-    void init(){
-        this.account = FactoryBankAccount.getSilverBankAccount();
-    }
-
     @Test
     public void testInitiallyEmpty() {
+        this.account = FactoryBankAccount.getSilverBankAccount();
         assertEquals(0, this.account.getBalance());
     }
 
     @Test
     public void testCanDeposit() {
+        this.account = FactoryBankAccount.getSilverBankAccount();
         this.account.deposit(1000);
         assertEquals(1000, this.account.getBalance());
     }
 
     @Test
     public void testCanWithdraw() {
+        this.account = FactoryBankAccount.getSilverBankAccount();
         this.account.deposit(1000);
         this.account.withdraw(200);
         assertEquals(799, this.account.getBalance());
@@ -35,8 +33,25 @@ public class BankAccountTest {
 
     @Test
     public void testCannotWithdrawMoreThanAvailable(){
+        this.account = FactoryBankAccount.getSilverBankAccount();
         this.account.deposit(1000);
         assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
+    }
+
+    @Test
+    public void testGoldBankAccountShouldThrowException(){
+        this.account = FactoryBankAccount.getGoldBankAccount();
+        this.account.deposit(1000);
+        this.account.withdraw(1400);
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(200));
+    }
+
+    @Test
+    public void testGoldBankAccountNoTransactionFee(){
+        this.account = FactoryBankAccount.getGoldBankAccount();
+        this.account.deposit(1000);
+        this.account.withdraw(700);
+        assertEquals(300, this.account.getBalance());
     }
 
 
