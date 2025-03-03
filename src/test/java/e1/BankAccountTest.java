@@ -12,7 +12,7 @@ public class BankAccountTest {
 
     @BeforeEach
     void init(){
-        this.account = new BankAccount();
+        this.account = FactoryBankAccount.getSilverBankAccount();
     }
 
     @Test
@@ -38,5 +38,7 @@ public class BankAccountTest {
         this.account.deposit(1000);
         assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
     }
+
+
 
 }
