@@ -54,6 +54,29 @@ public class BankAccountTest {
         assertEquals(300, this.account.getBalance());
     }
 
+    @Test
+    public void testBronzeBankAccountShouldThrowException(){
+        this.account = FactoryBankAccount.getBronzeBankAccount();
+        this.account.deposit(1000);
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
+    }
+
+    @Test
+    public void testBronzeBankAccountWithoutTransactionFee(){
+        this.account = FactoryBankAccount.getBronzeBankAccount();
+        this.account.deposit(1000);
+        this.account.withdraw(50);
+        assertEquals(950, this.account.getBalance());
+    }
+
+    @Test
+    public void testGoldBankAccountWithTransactionFee(){
+        this.account = FactoryBankAccount.getBronzeBankAccount();
+        this.account.deposit(1000);
+        this.account.withdraw(150);
+        assertEquals(849, this.account.getBalance());
+    }
+
 
 
 }

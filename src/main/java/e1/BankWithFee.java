@@ -3,9 +3,9 @@ package e1;
     public class BankWithFee implements BankAccount{
 
         private BankAccount base;
-        private int fee;
+        private StrategyFee fee;
 
-        public BankWithFee(BankAccount base, int fee){
+        public BankWithFee(BankAccount base, StrategyFee fee){
             this.base = base;
             this.fee = fee;
         }
@@ -22,6 +22,6 @@ package e1;
 
         @Override
         public void withdraw(int amount) {
-            base.withdraw(amount+fee);
+            base.withdraw(this.fee.getFee(amount));
         }
 }
