@@ -13,7 +13,7 @@ public class LogicTest {
 
   @BeforeEach
   void setup() {
-    logicsSimple = new LogicsImpl(8, new Pair<Integer, Integer>(5,5), new Pair<Integer, Integer>(6,7));
+    logicsSimple = new LogicsImpl(8, new Position(5,5), new Position(6,7));
     logicsRandom = new LogicsImpl(8);
     randomPosition = new RandomPositionGenerator();
   }
@@ -52,8 +52,8 @@ public class LogicTest {
 
   @Test
   public void testDifferentPosition(){
-    Pair<Integer, Integer> differentPair = new Pair<Integer, Integer>(0,0);
-    Pair<Integer, Integer> randPos = randomPosition.generateDifferentFrom(2, differentPair);
+    Position differentPair = new Position(0,0);
+    Position randPos = randomPosition.generateDifferentFrom(2, differentPair);
 
     Boolean xNotEqual = !Objects.equals(randPos.getX(), differentPair.getX());
     Boolean yNotEqual = !Objects.equals(randPos.getY(), differentPair.getY());
