@@ -15,7 +15,7 @@ public class LogicTest {
   void setup() {
     logicsSimple = new LogicsImpl(8, new Position(5,5), new Position(6,7));
     logicsRandom = new LogicsImpl(8);
-    randomPosition = new RandomPositionGenerator();
+    randomPosition = new RandomPositionImpl(8);
   }
 
   @Test
@@ -46,14 +46,14 @@ public class LogicTest {
 
   @Test
   public void testRandomPosition(){
-    assertTrue(randomPosition.generate(8).getX() < 8);
-    assertTrue(randomPosition.generate(8).getY() < 8);
+    assertTrue(randomPosition.generate().getX() < 8);
+    assertTrue(randomPosition.generate().getY() < 8);
   }
 
   @Test
   public void testDifferentPosition(){
     Position differentPair = new Position(0,0);
-    Position randPos = randomPosition.generateDifferentFrom(2, differentPair);
+    Position randPos = randomPosition.generateDifferentFrom(differentPair);
 
     Boolean xNotEqual = !Objects.equals(randPos.getX(), differentPair.getX());
     Boolean yNotEqual = !Objects.equals(randPos.getY(), differentPair.getY());
