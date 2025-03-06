@@ -46,4 +46,9 @@ public class LogicsImpl implements Logics {
     public String getValue(Pair<Integer, Integer> cell) {
         return "";
     }
+
+    @Override
+    public void addMine(Pair<Integer, Integer> pair) {
+
+    }
 }

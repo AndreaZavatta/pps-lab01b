@@ -8,4 +8,6 @@ public interface MainLogics {
     boolean hasFlag(Pair<Integer, Integer> cell);
     boolean hasCounter(Pair<Integer, Integer> cell);
     String getValue(Pair<Integer, Integer> cell);
+    void addMine(Pair<Integer, Integer> pair);
+
 }
