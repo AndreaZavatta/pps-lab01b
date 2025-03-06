@@ -1,16 +1,13 @@
 package e3;
 
+import javax.swing.*;
 import java.util.Map;
 
-public class LogicsImpl implements Logics {
+public class AppLogicImpl implements AppLogic {
+    public AppLogicImpl(int size){
 
-    public LogicsImpl(int size) {
     }
 
-    @Override
-    public Map<String, Pair<Integer, Integer>> getRandomBoard() {
-        return Map.of();
-    }
 
     @Override
     public boolean selectCell(Pair<Integer, Integer> cell) {
@@ -45,5 +42,15 @@ public class LogicsImpl implements Logics {
     @Override
     public String getValue(Pair<Integer, Integer> cell) {
         return "";
+    }
+
+    @Override
+    public Map<JButton, Pair<Integer, Integer>> getRandomBoardJButton() {
+        return Map.of();
+    }
+
+    @Override
+    public void addMine(Pair<Integer, Integer> pair) {
+
     }
 }

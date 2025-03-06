@@ -49,6 +49,4 @@ public class LogicsImpl implements Logics {
 	public boolean hasPawn(int row, int col) {
 		return this.pawn.equals(new Position(row, col));
 	}
-
-
 }
